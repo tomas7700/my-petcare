@@ -1,7 +1,6 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import Sidebar from "./sidebar";
 import {Menu} from 'lucide-react';
 import { Sheet, SheetTrigger,SheetContent } from "@/components/ui/sheet";
 import Sidebar from "./sidebar";
