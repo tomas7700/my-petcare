@@ -50,7 +50,7 @@ const ConversationPage =()=>{
        try{
 
         const userMessage: ChatCompletionMessage = {
-            role:"assistant",
+            role:"user",
             content: values.prompt,
 
         };
@@ -126,10 +126,10 @@ const ConversationPage =()=>{
                             <div className="flex flex-col-reverse gap-y-4">
                                 
                                 {messages.map((message) => (
-                                    <div className={cn('p-8 w-full flex items-start gap-x-8 rounded-ls', message.role === 'assistant' ? 'bg-white border border-black/10': 'bg-muted')}
+                                    <div className={cn('p-8 w-full flex items-start gap-x-8 rounded-ls', message.role === 'user' ? 'bg-white border border-black/10': 'bg-muted')}
                                     key={message.content}
                                     >
-                                        {message.role === 'assistant' ? <UserAvatar/> : <BotAvatar/>}
+                                        {message.role === 'user' ? <UserAvatar/> : <BotAvatar/>}
                                         <p className="text-sm">
                                             
                                          {message.content}
