@@ -44,11 +44,15 @@ export async function POST(
         }
 
         try {
-            const response = await openai.chat.completions.create({
-                model: "gpt-3.5-turbo",
-                messages: [instructionMessage, ...messages],
-                timeout: 10000, // establece un tiempo de espera de 10 segundos
-            });
+           const response = await openai.chat.completions.create(
+    {
+        model: "gpt-3.5-turbo",
+        messages: [instructionMessage, ...messages],
+    },
+    {
+        timeout: 10000,
+    }
+);
 
             await increaseApiLimit();
             return NextResponse.json(response.choices[0].message);
