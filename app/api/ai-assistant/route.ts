@@ -3,7 +3,7 @@ import { auth } from '@clerk/nextjs';
 import Configuration from 'openai';
 import OpenAIApi from 'openai';
 import { ChatCompletionMessage } from 'openai/resources/chat/index.mjs';
-
+import axios from "axios";
 import { increaseApiLimit, checkApiLimit } from '@/lib/api-limit';
 
 const configuration = new Configuration({
