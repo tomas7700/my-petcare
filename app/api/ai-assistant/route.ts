@@ -44,15 +44,14 @@ export async function POST(
         }
 
         try {
-           const response = await openai.chat.completions.create(
-    {
-        model: "gpt-3.5-turbo",
-        messages: [instructionMessage, ...messages],
-    }
-);
+            const response = await axios.post("/api/ai-assistant", {
+                messages: [instructionMessage, ...messages],
+            }, {
+                timeout: 15000, // Establece un tiempo de espera de 15 segundos
+            });
 
             await increaseApiLimit();
-            return NextResponse.json(response.choices[0].message);
+            return NextResponse.json(response.data);
         } catch (error) {
             if (axios.isAxiosError(error) && error.code === 'ECONNABORTED') {
                 return new NextResponse('Request timed out', { status: 504 });
@@ -61,6 +60,8 @@ export async function POST(
                 return new NextResponse('Internal error', { status: 500 });
             }
         }
+
+        // ...
     } catch (error) {
         console.log('[CODE_ERROR]', error);
         return new NextResponse('Internal error', { status: 500 });
