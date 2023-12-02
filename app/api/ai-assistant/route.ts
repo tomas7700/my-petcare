@@ -48,9 +48,6 @@ export async function POST(
     {
         model: "gpt-3.5-turbo",
         messages: [instructionMessage, ...messages],
-    },
-    {
-        timeout: 10000,
     }
 );
 
